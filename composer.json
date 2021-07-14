@@ -1,0 +1,21 @@
+{
+  "name": "silentpost/product-quiz",
+  "version": "1.0.0",
+  "description": "Provide users with a suggested product after answering questions based on product attributes.",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+    "magento/module-catalog": "104.0.*"
+  },
+  "license": [
+    "Massachusetts Institute of Technology License (MITL)"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Silentpost\\ProductQuiz\\": ""
+    }
+  }
+}
