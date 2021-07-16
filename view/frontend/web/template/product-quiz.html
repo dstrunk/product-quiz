@@ -1,0 +1,30 @@
+<div data-bind="visible: isVisible()">
+    <button data-bind="click: closeQuiz">
+        <span class="sr-only" data-bind="i18n: 'Close product quiz'"></span>
+        <span>&times;</span>
+    </button>
+
+    <!-- ko if: introStage() -->
+        <!-- ko foreach: getRegion('introStage') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko if: quizStage() -->
+        <!-- ko foreach: getRegion('quizStage') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko if: resultsStage() -->
+        <!-- ko foreach: getRegion('resultsStage') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko if: errorStage() -->
+        <!-- ko foreach: getRegion('errorStage') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+    <!-- /ko -->
+</div>
