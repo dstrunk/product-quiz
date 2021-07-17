@@ -1,9 +1,21 @@
 <div>
-    <h2 data-bind="i18n: 'Quiz'"></h2>
+    <h2 data-bind="text: $parent.currentQuestion().title"></h2>
+    <div data-bind="foreach: { data: $parent.currentQuestion().answers, as: 'answer' }">
+        <p data-bind="text: answer.selected"></p>
+        <button data-bind="click: $parentContext.$parent.currentQuestion().selectAnswer">
+            <span class="sr-only" data-bind="text: 'Select ' + answer.title"></span>
+        </button>
+    </div>
+
     <button data-bind="click: $parent.previous">
         <span data-bind="i18n: 'Previous'"></span>
     </button>
+
     <button data-bind="click: $parent.next">
         <span data-bind="i18n: 'Next'"></span>
     </button>
+
+    <div data-bind="foreach: { data: $parent.questions, as: 'question' }">
+        <span data-bind="text: $index, css: { active: ($parentContext.$parent.currentQuestion().id === $index()) }"></span>
+    </div>
 </div>

@@ -82,38 +82,59 @@ define([
         },
 
         isVisible: ko.observable(false),
-        errorStage: ko.observable(true),
-        introStage: ko.observable(true),
-        quizStage: ko.observable(true),
-        resultsStage: ko.observable(true),
+        errorStage: ko.observable(false),
+        introStage: ko.observable(false),
+        quizStage: ko.observable(false),
         quizTitle: ko.observable(''),
         quizDescription: ko.observable(''),
-        questions: ko.observableArray([]),
+        questions: [],
+        quizIndex: ko.observable(0),
 
         initialize: function () {
-            self = this;
-            this._super();
+            self = this
+            self._super()
+
+            self.fetchQuiz()
         },
 
         openQuiz: function () {
-            return this.isVisible(true);
+            this.isVisible(true)
         },
 
         closeQuiz: function () {
-            return this.isVisible(false);
+            this.isVisible(false)
+        },
+
+        startQuiz: function () {
+            self.introStage(false)
+            self.quizStage(true)
         },
 
         previous: function () {
-            return false;
+            self.quizIndex(self.quizIndex() - 1)
         },
 
         next: function () {
-            return false;
+            self.quizIndex(self.quizIndex() + 1)
         },
 
         fetchQuiz: function () {
             // @TODO: Request quiz information and questions from controller.
             // @TODO: Push questions into KO observable array.
+            self.quizTitle(data.title)
+            self.quizDescription(data.description)
+            data.questions.forEach(function (question) {
+                let koComponent = new QuizQuestion(question)
+                self.questions.push(koComponent)
+            })
+
+            self.quizIndex(0)
+
+            self.currentQuestion = ko.pureComputed(function () {
+                return self.questions[self.quizIndex()]
+            }, self)
+
+            self.introStage(true)
         },
 
         submit: function () {

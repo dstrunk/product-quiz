@@ -1,19 +1,38 @@
 define([
-    'ko',
     'uiComponent',
     'productQuizAnswer',
-], function (ko, Component, QuizAnswer) {
+], function (Component, QuizAnswer) {
     'use strict';
 
     let self;
     return Component.extend({
         defaults: {
-            template: 'Silentpost_ProductQuiz/product-quiz/stage/quiz/question',
+            tracks: {
+                id: true,
+                title: true,
+                answers: true,
+            },
         },
 
-        initialize: function () {
+        initialize: function (question) {
             self = this;
-            this._super();
+            self._super();
+
+            self.id = question.id
+            self.title = question.title
+            self.answers = []
+
+            question.answers.forEach(function (answer) {
+                self.answers.push(new QuizAnswer(answer))
+            })
         },
-    });
-});
+
+        selectAnswer: function (answer) {
+            self.answers.forEach(function (a) {
+                a.selected = false
+            })
+
+            answer.selected = true
+        },
+    })
+})
