@@ -5,6 +5,7 @@ define([
 ], function (ko, Component, QuizQuestion) {
     'use strict';
 
+    let self;
     return Component.extend({
         defaults: {
             template: 'Silentpost_ProductQuiz/product-quiz',
@@ -20,6 +21,7 @@ define([
         questions: ko.observableArray([]),
 
         initialize: function () {
+            self = this;
             this._super();
         },
 
