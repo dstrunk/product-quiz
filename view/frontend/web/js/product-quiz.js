@@ -5,6 +5,76 @@ define([
 ], function (ko, Component, QuizQuestion) {
     'use strict';
 
+    const data = {
+        title: 'A Quiz!',
+        description: 'Click below to get started.',
+        questions: [
+            {
+                id: 0,
+                title: 'Question 1',
+                answers: [
+                    {
+                        id: 0,
+                        title: 'Answer 1',
+                        selected: false,
+                    },
+                    {
+                        id: 1,
+                        title: 'Answer 2',
+                        selected: false,
+                    },
+                    {
+                        id: 2,
+                        title: 'Answer 3',
+                        selected: false,
+                    },
+                ],
+            },
+            {
+                id: 1,
+                title: 'Question 2',
+                answers: [
+                    {
+                        id: 0,
+                        title: 'Answer 1',
+                        selected: false,
+                    },
+                    {
+                        id: 1,
+                        title: 'Answer 2',
+                        selected: false,
+                    },
+                    {
+                        id: 2,
+                        title: 'Answer 3',
+                        selected: false,
+                    },
+                ],
+            },
+            {
+                id: 2,
+                title: 'Question 3',
+                answers: [
+                    {
+                        id: 0,
+                        title: 'Answer 1',
+                        selected: false,
+                    },
+                    {
+                        id: 1,
+                        title: 'Answer 2',
+                        selected: false,
+                    },
+                    {
+                        id: 2,
+                        title: 'Answer 3',
+                        selected: false,
+                    },
+                ],
+            },
+        ],
+    };
+
     let self;
     return Component.extend({
         defaults: {
