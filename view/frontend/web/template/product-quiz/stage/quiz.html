@@ -7,15 +7,15 @@
         </button>
     </div>
 
-    <button data-bind="click: $parent.previous">
+    <button class="action secondary" data-bind="click: $parent.previous">
         <span data-bind="i18n: 'Previous'"></span>
     </button>
 
-    <button data-bind="click: $parent.next">
+    <button class="action primary" data-bind="click: $parent.next">
         <span data-bind="i18n: 'Next'"></span>
     </button>
 
-    <div data-bind="foreach: { data: $parent.questions, as: 'question' }">
-        <span data-bind="text: $index, css: { active: ($parentContext.$parent.currentQuestion().id === $index()) }"></span>
+    <div class="quiz__pagination" data-bind="foreach: { data: $parent.questions, as: 'question' }">
+        <span class="quiz__pagination-item" data-bind="text: $index, css: { 'quiz__pagination-item--active': $parentContext.$parent.currentQuestion().id == $index() }"></span>
     </div>
 </div>
