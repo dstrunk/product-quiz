@@ -7,6 +7,7 @@ define([
     let self;
     return Component.extend({
         defaults: {
+            template: 'Silentpost_ProductQuiz/product-quiz/stage/quiz/question',
             tracks: {
                 id: true,
                 title: true,

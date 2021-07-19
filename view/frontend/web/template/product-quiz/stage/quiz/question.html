@@ -1,0 +1,5 @@
+<h2 data-bind="text: question.title"></h2>
+
+<div data-bind="foreach: { data: question.answers, as: 'answer' }">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
