@@ -134,6 +134,16 @@ define([
         },
 
         submit: function () {
+            let values = []
+
+            self.questions.forEach(question => {
+                let answer = {}
+                let object = question.answers.find(answer => answer.selected === true)
+                answer.question_id = question.id
+                answer.answer_id = object.id
+                values.push(answer)
+            })
+
             // @TODO: Submit results to controller.
         },
 
