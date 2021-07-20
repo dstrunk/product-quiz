@@ -1,5 +1,7 @@
-<h2 data-bind="text: question.title"></h2>
+<div class="product-quiz__question">
+    <h2 data-bind="text: question.title"></h2>
 
-<div data-bind="foreach: { data: question.answers, as: 'answer' }">
-    <!-- ko template: getTemplate() --><!-- /ko -->
+    <div class="product-quiz__answers" data-bind="foreach: { data: question.answers, as: 'answer' }">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    </div>
 </div>

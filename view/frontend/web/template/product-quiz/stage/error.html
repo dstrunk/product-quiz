@@ -1,6 +1,9 @@
-<div>
+<div class="product-quiz__error">
     <h2 data-bind="i18n: 'Oops! It looks like something went wrong…'"></h2>
     <p data-bind="i18n: 'Please try again.'"></p>
-    <button data-bind="click: $parent.submit, i18n: 'Resubmit results'"></button>
-    <button data-bind="click: $parent.restartQuiz, i18n: 'Restart quiz'"></button>
+
+    <div class="product-quiz__actions">
+        <button data-bind="click: function () { $parent.restartQuiz() }, i18n: 'Restart quiz'"></button>
+        <button data-bind="visible: $parent.canViewResults(), click: function () { $parent.submit() }, i18n: 'Resubmit results'"></button>
+    </div>
 </div>

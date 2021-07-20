@@ -1,4 +1,6 @@
-<p data-bind="text: answer.selected"></p>
-<button data-bind="click: function (data) { $parentContext.question.selectAnswer(data) }">
-    <span class="sr-only" data-bind="text: 'Select ' + answer.title"></span>
-</button>
+<div class="product-quiz__answer" data-bind="css: { 'product-quiz__answer--selected': answer.selected }">
+    <h3 data-bind="text: answer.title"></h3>
+    <button data-bind="click: function (data) { $parentContext.question.selectAnswer(data) }">
+        <span class="sr-only" data-bind="text: 'Select ' + answer.title"></span>
+    </button>
+</div>
