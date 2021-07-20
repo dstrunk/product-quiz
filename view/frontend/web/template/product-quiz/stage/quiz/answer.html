@@ -1,4 +1,4 @@
 <p data-bind="text: answer.selected"></p>
-<button data-bind="click: question.selectAnswer">
+<button data-bind="click: function (data) { $parentContext.question.selectAnswer(data) }">
     <span class="sr-only" data-bind="text: 'Select ' + answer.title"></span>
 </button>

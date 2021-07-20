@@ -3,7 +3,6 @@ define([
 ], function (Component) {
     'use strict';
 
-    let self;
     return Component.extend({
         defaults: {
             template: 'Silentpost_ProductQuiz/product-quiz/stage/quiz/answer',
@@ -15,12 +14,11 @@ define([
         },
 
         initialize: function (answer) {
-            self = this
-            self._super()
+            this._super()
 
-            self.id = answer.id
-            self.title = answer.title
-            self.selected = answer.selected
+            this.id = answer.id
+            this.title = answer.title
+            this.selected = answer.selected
         },
     })
 })

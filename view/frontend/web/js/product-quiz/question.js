@@ -4,7 +4,6 @@ define([
 ], function (Component, QuizAnswer) {
     'use strict';
 
-    let self;
     return Component.extend({
         defaults: {
             template: 'Silentpost_ProductQuiz/product-quiz/stage/quiz/question',
@@ -16,20 +15,19 @@ define([
         },
 
         initialize: function (question) {
-            self = this;
-            self._super();
+            this._super()
 
-            self.id = question.id
-            self.title = question.title
-            self.answers = []
+            this.id = question.id
+            this.title = question.title
+            this.answers = []
 
-            question.answers.forEach(function (answer) {
-                self.answers.push(new QuizAnswer(answer))
-            })
+            question.answers.forEach(answer => this.answers.push(new QuizAnswer(answer)))
+
+            return this
         },
 
         selectAnswer: function (answer) {
-            self.answers.forEach(function (a) {
+            this.answers.forEach(function (a) {
                 a.selected = false
             })
 
