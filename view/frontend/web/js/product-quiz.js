@@ -99,6 +99,22 @@ define([
             self.quizIndex = self.quizIndex + 1
         },
 
+        canProceedToNextStep: function () {
+            return self.quizIndex < self.questions.length - 1 &&
+                self.currentQuestion().answers.find(function (answer) {
+                    return answer.selected === true
+                })
+        },
+
+        canViewResults: function () {
+            return self.quizIndex === self.questions.length - 1 &&
+                self.questions.every(function (question) {
+                    return question.answers.find(function (answer) {
+                        return answer.selected === true;
+                    })
+                })
+        },
+
         fetchQuiz: function () {
             // @TODO: Request quiz information and questions from controller.
             // @TODO: Push questions into KO observable array.
