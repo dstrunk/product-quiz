@@ -11,7 +11,8 @@
         <span data-bind="i18n: 'Next'"></span>
     </button>
 
-    <button data-bind="visible: $parent.canViewResults(), click: function () { $parent.submit() }, i18n: 'View results'"></button>
+    <button class="action secondary" data-bind="visible: $parent.canViewResults(), click: function () { $parent.restartQuiz() }, i18n: 'Restart Quiz'"></button>
+    <button class="action primary" data-bind="visible: $parent.canViewResults(), click: function () { $parent.submit() }, i18n: 'View results'"></button>
 
     <div class="quiz__pagination" data-bind="foreach: { data: $parent.questions, as: 'question' }">
         <span class="quiz__pagination-item" data-bind="text: $index, css: { 'quiz__pagination-item--active': $parentContext.$parent.currentQuestion().id == $index() }"></span>

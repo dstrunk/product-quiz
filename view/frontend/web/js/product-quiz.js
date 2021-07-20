@@ -148,7 +148,14 @@ define([
         },
 
         restartQuiz: function () {
-            return false;
+            self.quizIndex = 0
+            self.resetQuizData()
+            self.introStage = true
+            self.quizStage = false
+        },
+
+        resetQuizData: function () {
+            self.questions.forEach(question => question.answers.forEach(answer => answer.selected = false))
         },
     });
 });
