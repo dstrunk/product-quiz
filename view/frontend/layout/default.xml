@@ -2,42 +2,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Silentpost\ProductQuiz\Block\Quiz" name="product-quiz" as="product-quiz" before="-" template="Silentpost_ProductQuiz::product-quiz.phtml">
-                <arguments>
-                    <argument name="jsLayout" xsi:type="array">
-                        <item name="types" xsi:type="array" />
-                        <item name="components" xsi:type="array">
-                            <item name="productQuizContainer" xsi:type="array">
-                                <item name="component" xsi:type="string">Silentpost_ProductQuiz/js/product-quiz</item>
-                                <item name="displayArea" xsi:type="string">productQuizContainer</item>
-                                <item name="children" xsi:type="array">
-                                    <item name="introStage" xsi:type="array">
-                                        <item name="component" xsi:type="string">uiComponent</item>
-                                        <item name="displayArea" xsi:type="string">introStage</item>
-                                        <item name="config" xsi:type="array">
-                                            <item name="template" xsi:type="string">Silentpost_ProductQuiz/product-quiz/stage/intro</item>
-                                        </item>
-                                    </item>
-                                    <item name="quizStage" xsi:type="array">
-                                        <item name="component" xsi:type="string">uiComponent</item>
-                                        <item name="displayArea" xsi:type="string">quizStage</item>
-                                        <item name="config" xsi:type="array">
-                                            <item name="template" xsi:type="string">Silentpost_ProductQuiz/product-quiz/stage/quiz</item>
-                                        </item>
-                                    </item>
-                                    <item name="errorStage" xsi:type="array">
-                                        <item name="component" xsi:type="string">uiComponent</item>
-                                        <item name="displayArea" xsi:type="string">errorStage</item>
-                                        <item name="config" xsi:type="array">
-                                            <item name="template" xsi:type="string">Silentpost_ProductQuiz/product-quiz/stage/error</item>
-                                        </item>
-                                    </item>
-                                </item>
-                            </item>
-                        </item>
-                    </argument>
-                </arguments>
-            </block>
+            <block class="Silentpost\ProductQuiz\Block\Quiz" name="product-quiz" as="product-quiz" before="-" template="Silentpost_ProductQuiz::product-quiz.phtml" />
         </referenceContainer>
     </body>
 </page>

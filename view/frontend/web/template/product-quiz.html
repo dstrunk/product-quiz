@@ -1,24 +1,26 @@
-<div class="product-quiz" data-bind="visible: isVisible">
-    <button class="product-quiz__close-button" data-bind="click: closeQuiz">
-        <span class="sr-only" data-bind="i18n: 'Close product quiz'"></span>
-        <span>&times;</span>
-    </button>
+<div class="product-quiz" data-bind="css: { 'product-quiz--active': isVisible }">
+    <div class="product-quiz__container">
+        <button class="product-quiz__close-button" data-bind="click: closeQuiz">
+            <span class="sr-only" data-bind="i18n: 'Close product quiz'"></span>
+            <span>&times;</span>
+        </button>
 
-    <!-- ko if: introStage -->
-        <!-- ko foreach: getRegion('introStage') -->
-            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- ko if: introStage -->
+            <!-- ko foreach: getRegion('introStage') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
         <!-- /ko -->
-    <!-- /ko -->
 
-    <!-- ko if: quizStage -->
-        <!-- ko foreach: getRegion('quizStage') -->
-            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- ko if: quizStage -->
+            <!-- ko foreach: getRegion('quizStage') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
         <!-- /ko -->
-    <!-- /ko -->
 
-    <!-- ko if: errorStage -->
-        <!-- ko foreach: getRegion('errorStage') -->
-            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- ko if: errorStage -->
+            <!-- ko foreach: getRegion('errorStage') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
         <!-- /ko -->
-    <!-- /ko -->
+    </div>
 </div>

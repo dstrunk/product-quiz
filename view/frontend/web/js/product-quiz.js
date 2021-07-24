@@ -6,8 +6,6 @@ define([
     'use strict';
 
     const data = {
-        title: 'A Quiz!',
-        description: 'Click below to get started.',
         questions: [
             {
                 id: 0,
@@ -69,13 +67,13 @@ define([
             },
         },
 
-        initialize: function () {
+        initialize: function (config) {
             self = this
             self._super()
 
             self.questions = []
 
-            self.fetchQuiz()
+            self.fetchQuiz(config)
         },
 
         openQuiz: function () {
@@ -115,11 +113,11 @@ define([
                 })
         },
 
-        fetchQuiz: function () {
+        fetchQuiz: function (config) {
             // @TODO: Request quiz information and questions from controller.
             // @TODO: Push questions into KO observable array.
-            self.quizTitle = data.title
-            self.quizDescription = data.description
+            self.quizTitle = config.data.title
+            self.quizDescription = config.data.description
             data.questions.forEach(function (question) {
                 self.questions.push(new QuizQuestion(question))
             })

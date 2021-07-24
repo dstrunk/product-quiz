@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Silentpost_ProductQuiz"
+             title="Product Quiz"
+             translate="title"
+             module="Silentpost_ProductQuiz"
+             resource="Silentpost_ProductQuiz::productquiz"
+             dependsOnModule="Silentpost_ProductQuiz"
+             sortOrder="10"
+        />
+
+        <add id="Silentpost_ProductQuiz::config"
+             title="Quiz Configuration"
+             translate="title"
+             module="Silentpost_ProductQuiz"
+             resource="Silentpost_ProductQuiz::config"
+             parent="Silentpost_ProductQuiz"
+             dependsOnModule="Silentpost_ProductQuiz"
+             action="adminhtml/system_config/edit/section/product_quiz"
+             sortOrder="10"
+        />
+    </menu>
+</config>

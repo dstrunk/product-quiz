@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="silentpost" translate="label" sortOrder="500">
+            <label>Silentpost</label>
+        </tab>
+        <section id="product_quiz" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Product Quiz</label>
+            <tab>silentpost</tab>
+            <resource>Silentpost_ProductQuiz::quiz</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="title" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                </field>
+                <field id="description" translate="label" type="editor" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Description</label>
+                    <frontend_model>Silentpost\ProductQuiz\Block\Adminhtml\System\Config\Editor</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
