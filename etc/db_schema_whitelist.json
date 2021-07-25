@@ -1,0 +1,48 @@
+{
+  "silentpost_productquiz_questions": {
+    "column": {
+      "question_id": true,
+      "title": true,
+      "description": true,
+      "is_active": true,
+      "created_at": true,
+      "updated_at": true
+    },
+    "index": {
+      "SILENTPOST_PRODUCTQUIZ_QUESTIONS_QUESTION_ID": true
+    },
+    "constraint": {
+      "PRIMARY": true
+    }
+  },
+  "silentpost_productquiz_answers": {
+    "column": {
+      "answer_id": true,
+      "title": true,
+      "description": true,
+      "created_at": true,
+      "updated_at": true
+    },
+    "index": {
+      "SILENTPOST_PRODUCTQUIZ_ANSWERS_ANSWER_ID": true
+    },
+    "constraint": {
+      "PRIMARY": true
+    }
+  },
+  "silentpost_productquiz_recommendations": {
+    "column": {
+      "recommendation_id": true,
+      "question_ids": true,
+      "product_ids": true,
+      "created_at": true,
+      "updated_at": true
+    },
+    "index": {
+      "SILENTPOST_PRODUCTQUIZ_RECOMMENDATIONS_RECOMMENDATION_ID": true
+    },
+    "constraint": {
+      "PRIMARY": true
+    }
+  }
+}
