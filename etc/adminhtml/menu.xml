@@ -5,19 +5,16 @@
              title="Product Quiz"
              translate="title"
              module="Silentpost_ProductQuiz"
-             resource="Silentpost_ProductQuiz::productquiz"
-             dependsOnModule="Silentpost_ProductQuiz"
+             resource="Silentpost_ProductQuiz::management"
              sortOrder="10"
         />
-
-        <add id="Silentpost_ProductQuiz::config"
-             title="Quiz Configuration"
+        <add id="Silentpost_ProductQuiz::question_management"
+             title="Question Management"
              translate="title"
              module="Silentpost_ProductQuiz"
-             resource="Silentpost_ProductQuiz::config"
              parent="Silentpost_ProductQuiz"
-             dependsOnModule="Silentpost_ProductQuiz"
-             action="adminhtml/system_config/edit/section/product_quiz"
+             resource="Silentpost_ProductQuiz::question_management"
+             action="productquiz/question/index"
              sortOrder="10"
         />
     </menu>

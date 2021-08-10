@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">silentpost_question_form.silentpost_question_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Question Form</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <namespace>silentpost_question_form</namespace>
+        <dataScope>data.general</dataScope>
+        <deps>
+            <dep>silentpost_question_form.silentpost_question_form_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="save" class="Silentpost\ProductQuiz\Block\Form\Question\Save"/>
+            <button name="back" class="Silentpost\ProductQuiz\Block\Form\Question\Back"/>
+            <button name="delete" class="Silentpost\ProductQuiz\Block\Form\Question\Delete"/>
+        </buttons>
+    </settings>
+    <dataSource name="silentpost_question_form_data_source" component="Magento_Ui/js/form/provider">
+        <settings>
+            <submitUrl path="productquiz/question/save"/>
+        </settings>
+        <dataProvider class="Silentpost\ProductQuiz\Ui\DataProvider\QuestionDataProvider"
+                      name="silentpost_question_form_data_source">
+            <settings>
+                <requestFieldName>question_id</requestFieldName>
+                <primaryFieldName>question_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <label translate="true">General</label>
+        </settings>
+        <field name="question_id" sortOrder="0" formElement="hidden">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">question_id</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Entity ID</label>
+                <dataScope>question_id</dataScope>
+            </settings>
+        </field>
+        <field name="title" sortOrder="00" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">title</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Title</label>
+                <dataScope>title</dataScope>
+            </settings>
+        </field>
+        <field name="description" sortOrder="10" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">description</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Description</label>
+                <dataScope>description</dataScope>
+            </settings>
+        </field>
+        <field name="is_enabled" sortOrder="20" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">is_enabled</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>bool</dataType>
+                <label translate="true">Is Enabled</label>
+                <dataScope>is_enabled</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

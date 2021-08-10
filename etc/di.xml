@@ -2,5 +2,5 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Silentpost\ProductQuiz\Api\Data\QuestionInterface"
-                type="Silentpost\ProductQuiz\Model\Data\Question"/>
+                type="Silentpost\ProductQuiz\Model\Data\QuestionData"/>
 </config>

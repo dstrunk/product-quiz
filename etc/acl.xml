@@ -6,7 +6,9 @@
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="Silentpost_ProductQuiz::quiz" title="Product Quiz" translate="title" />
+                            <resource id="Silentpost_ProductQuiz::quiz" title="Product Quiz" translate="title" >
+                                <resource id="Silentpost_ProductQuiz::question_management" title="Question Management"/>
+                            </resource>
                         </resource>
                     </resource>
                 </resource>
