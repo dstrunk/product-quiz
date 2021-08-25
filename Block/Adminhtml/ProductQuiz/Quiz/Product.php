@@ -3,6 +3,7 @@
 namespace Silentpost\ProductQuiz\Block\Adminhtml\ProductQuiz\Quiz;
 
 use Magento\Backend\Block\Template\Context;
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Visibility;
 use Magento\Backend\Block\Widget\Grid\Extended;
 use Magento\Backend\Helper\Data;
@@ -37,6 +38,9 @@ class Product extends Extended
     /** @var Visibility|null */
     private $visibility;
 
+    /** @var Status|null */
+    private $status;
+
     public function __construct(
         Context $context,
         Data $backendHelper,
@@ -47,6 +51,7 @@ class Product extends Extended
         StoreManagerInterface $storeManager,
         Json $jsonHelper,
         Visibility $visibility = null,
+        Status $status = null,
         array $data = []
     ) {
         $this->productFactory = $productFactory;
@@ -56,6 +61,7 @@ class Product extends Extended
         $this->storeManager = $storeManager;
         $this->jsonHelper = $jsonHelper;
         $this->visibility = $visibility ?: ObjectManager::getInstance()->get(Visibility::class);
+        $this->status = $status ?: ObjectManager::getInstance()->get(Status::class);
 
         parent::__construct($context, $backendHelper, $data);
     }
@@ -82,6 +88,9 @@ class Product extends Extended
             ->addAttributeToSelect('name')
             ->addAttributeToSelect('attribute_set_id')
             ->addAttributeToSelect('type_id')
+            ->addAttributeToSelect('visibility')
+            ->addAttributeToSelect('price')
+            ->addAttributeToSelect('status')
             ->setStore($store);
 
         $this->setCollection($collection);
@@ -121,11 +130,34 @@ class Product extends Extended
             'column_css_class' => 'col-sku',
         ]);
 
+        $this->addColumn('visibility', [
+            'header' => __('Visibility'),
+            'index' => 'visibility',
+            'type' => 'options',
+            'options' => $this->visibility->getOptionArray(),
+            'header_css_class' => 'col-visibility',
+            'column_css_class' => 'col-visibility',
+        ]);
+
+        $this->addColumn('status', [
+            'header' => __('Status'),
+            'index' => 'status',
+            'type' => 'options',
+            'options' => $this->status->getOptionArray(),
+        ]);
+
+        $this->addColumn('price', [
+            'header' => __('Price'),
+            'type' => 'currency',
+            'currency_code' => (string)$this->_scopeConfig->getValue(
+                \Magento\Directory\Model\Currency::XML_PATH_CURRENCY_BASE,
+                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+            ),
+            'index' => 'price',
+        ]);
+
         $this->addColumn('position', [
             'header' => __('Position'),
-            'index' => 'position',
-            'width' => 60,
-            'validate_class' => 'validate-number',
             'index' => 'position',
             'editable' => true,
             'edit_only' => true,
@@ -139,14 +171,14 @@ class Product extends Extended
         return array_keys($this->getSelectedProducts());
     }
 
-    private function getSelectedProducts()
+    private function getSelectedProducts(): array
     {
         $id = $this->getRequest()->getParam('quiz_id');
         $model = $this->quizCollectionFactory->create()->addFieldToFilter('quiz_id', $id);
 
         $products = $model->getData()[0]['products'];
         if (empty($model->getData()) || $products === '') {
-            return false;
+            return [];
         }
 
         $products = $this->jsonHelper->unserialize($products);

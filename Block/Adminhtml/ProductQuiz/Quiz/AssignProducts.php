@@ -60,17 +60,17 @@ class AssignProducts extends Template
 
     public function getProductsJson()
     {
-        $entityId = $this->getRequest()->getParam('quiz_id');
-        $productFactory = $this->quizCollectionFactory->create();
-        $productFactory->addFieldToSelect(['products']);
-        $productFactory->addFieldToFilter('quiz_id', ['eq' => $entityId]);
+        $quizId = $this->getRequest()->getParam('quiz_id');
+        $quizFactory = $this->quizCollectionFactory->create();
+        $quizFactory->addFieldToSelect(['products']);
+        $quizFactory->addFieldToFilter('quiz_id', ['eq' => $quizId]);
 
-        $products = $productFactory->getData()[0]['products'];
-        if (empty($productFactory->getData()) || $products === '') {
+        $products = $quizFactory->getData()[0]['products'];
+        if (empty($quizFactory->getData()) || $products === '') {
             return $this->jsonEncoder->serialize('');
         }
 
-        return $productFactory->getData()[0]['products'];
+        return $quizFactory->getData()[0]['products'];
     }
 
     public function getItem()
