@@ -8,14 +8,23 @@
              resource="Silentpost_ProductQuiz::management"
              sortOrder="10"
         />
+        <add id="Silentpost_ProductQuiz::management"
+             sortOrder="10"
+             title="Quiz Management"
+             translate="title"
+             module="Silentpost_ProductQuiz"
+             parent="Silentpost_ProductQuiz"
+             resource="Silentpost_ProductQuiz::quiz_management"
+             action="productquiz/quiz/index"
+        />
         <add id="Silentpost_ProductQuiz::question_management"
+             sortOrder="20"
              title="Question Management"
              translate="title"
              module="Silentpost_ProductQuiz"
              parent="Silentpost_ProductQuiz"
              resource="Silentpost_ProductQuiz::question_management"
              action="productquiz/question/index"
-             sortOrder="10"
         />
     </menu>
 </config>

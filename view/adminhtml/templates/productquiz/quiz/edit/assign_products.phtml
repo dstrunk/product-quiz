@@ -1,0 +1,23 @@
+<?php
+/** @var \Silentpost\ProductQuiz\Block\Adminhtml\ProductQuiz\Quiz\AssignProducts $block */
+/** @var \Silentpost\ProductQuiz\Block\Adminhtml\ProductQuiz\Quiz\Product $blockGrid */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+
+$blockGrid = $block->getBlockGrid();
+$gridJsObjectName = $blockGrid->getJsObjectName();
+?>
+
+<?= $block->getGridHtml() ?>
+<input type="hidden" name="general[products]" id="general[products]" data-form-part="silentpost_quiz_form" value="" />
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Silentpost_ProductQuiz/js/productquiz/quiz/edit/assign-products": {
+                "selectedProducts": <?= /* @noEscape */ $block->getProductsJson() ?>,
+                "gridJsObjectName": <?= /* @noEscape */ '"' . $gridJsObjectName . '"' ?: '{}' ?>
+            }
+        }
+    }
+</script>
+<!-- @todo remove when "UI components" will support such initialization -->
+<?= /* @noEscape */ $secureRenderer->renderTag('script', [], "require('mage/apply/main').apply();", false) ?>

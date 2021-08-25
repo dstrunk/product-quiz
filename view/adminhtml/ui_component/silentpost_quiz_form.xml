@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">silentpost_quiz_form.silentpost_quiz_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Quiz Form</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <namespace>silentpost_quiz_form</namespace>
+        <dataScope>data.general</dataScope>
+        <deps>
+            <dep>silentpost_quiz_form.silentpost_quiz_form_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="save" class="Silentpost\ProductQuiz\Block\Form\Quiz\Save"/>
+            <button name="back" class="Silentpost\ProductQuiz\Block\Form\Quiz\Back"/>
+            <button name="delete" class="Silentpost\ProductQuiz\Block\Form\Quiz\Delete"/>
+        </buttons>
+    </settings>
+    <dataSource name="silentpost_quiz_form_data_source" component="Magento_Ui/js/form/provider">
+        <settings>
+            <submitUrl path="productquiz/quiz/save"/>
+        </settings>
+        <dataProvider class="Silentpost\ProductQuiz\Ui\DataProvider\QuizDataProvider"
+                      name="silentpost_quiz_form_data_source">
+            <settings>
+                <requestFieldName>quiz_id</requestFieldName>
+                <primaryFieldName>quiz_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <label translate="true">General</label>
+        </settings>
+        <field name="quiz_id" sortOrder="0" formElement="hidden">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">quiz_id</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Entity ID</label>
+                <dataScope>quiz_id</dataScope>
+            </settings>
+        </field>
+        <field name="title" sortOrder="10" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">title</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Title</label>
+                <dataScope>title</dataScope>
+            </settings>
+        </field>
+        <field name="is_enabled" sortOrder="20" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">is_enabled</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>bool</dataType>
+                <label translate="true">Is Enabled</label>
+                <dataScope>is_enabled</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="description" template="ui/form/field" sortOrder="30" formElement="wysiwyg">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="height" xsi:type="string">100px</item>
+                        <item name="add_variables" xsi:type="boolean">false</item>
+                        <item name="add_widgets" xsi:type="boolean">false</item>
+                        <item name="add_images" xsi:type="boolean">false</item>
+                        <item name="add_directives" xsi:type="boolean">false</item>
+                    </item>
+                    <item name="source" xsi:type="string">description</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Description</label>
+                <dataScope>description</dataScope>
+                <additionalClasses>
+                    <class name="admin__field">true</class>
+                </additionalClasses>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <rows>8</rows>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+    </fieldset>
+    <fieldset name="assigned_products" sortOrder="20">
+        <settings>
+            <label translate="true">Products in Quiz</label>
+        </settings>
+        <container name="assign_products_container" sortOrder="10">
+            <htmlContent name="html_content">
+                <block name="block" class="Silentpost\ProductQuiz\Block\Adminhtml\ProductQuiz\Quiz\AssignProducts"/>
+            </htmlContent>
+        </container>
+    </fieldset>
+</form>
