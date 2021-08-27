@@ -11,6 +11,7 @@ interface QuestionInterface
     const TITLE = "title";
     const DESCRIPTION = "description";
     const IS_ENABLED = "is_enabled";
+    const QUIZ_IDS = "quiz_ids";
 
     /**
      * Getter for QuestionId.
@@ -75,4 +76,20 @@ interface QuestionInterface
      * @return void
      */
     public function setIsEnabled(?bool $isEnabled): void;
+
+    /**
+     * Getter for QuizIds.
+     *
+     * @return string|null
+     */
+    public function getQuizIds(): ?string;
+
+    /**
+     * Setter for QuizIds.
+     *
+     * @param string|null $quizIds
+     *
+     * @return void
+     */
+    public function setQuizIds(?string $quizIds): void;
 }

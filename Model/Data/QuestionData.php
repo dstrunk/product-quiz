@@ -72,4 +72,20 @@ class QuestionData extends DataObject implements QuestionInterface
     {
         $this->setData(self::IS_ENABLED, $isEnabled);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getQuizIds(): ?string
+    {
+        return $this->getData(self::QUIZ_IDS);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setQuizIds(?string $quizIds): void
+    {
+        $this->setData(self::QUIZ_IDS, $quizIds);
+    }
 }

@@ -70,6 +70,10 @@ class Save extends Action implements HttpPostActionInterface
         $resultRedirect = $this->resultRedirectFactory->create();
         $params = $this->getRequest()->getParams();
 
+        if (isset($params['general']['quiz_ids'])) {
+            $params['general']['quiz_ids'] = implode(',', $params['general']['quiz_ids']);
+        }
+
         try {
             /** @var QuestionInterface|DataObject $entityModel */
             $entityModel = $this->entityDataFactory->create();

@@ -112,5 +112,25 @@
                 </wysiwyg>
             </formElements>
         </field>
+        <field name="quiz_ids" sortOrder="40" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">quiz_ids</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Quizzes</label>
+                <dataScope>quiz_ids</dataScope>
+                <notice translate="true">Use Ctrl+Click to select multiple values or unselect a value.</notice>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Silentpost\ProductQuiz\Block\Adminhtml\ProductQuiz\Question\Select"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
     </fieldset>
 </form>

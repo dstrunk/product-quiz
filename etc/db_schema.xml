@@ -22,6 +22,7 @@
         <column xsi:type="text" name="title" nullable="false"/>
         <column xsi:type="text" name="description" nullable="true"/>
         <column xsi:type="boolean" name="is_enabled" nullable="false" comment="Is Enabled Column"/>
+        <column xsi:type="varchar" name="quiz_ids" nullable="true" comment="Quiz IDs"/>
         <column xsi:type="datetime" name="created_at" nullable="false" on_update="false" default="CURRENT_TIMESTAMP"/>
         <column xsi:type="datetime" name="updated_at" nullable="false" on_update="true" default="CURRENT_TIMESTAMP"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
