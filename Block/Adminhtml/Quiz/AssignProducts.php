@@ -1,6 +1,6 @@
 <?php
 
-namespace Silentpost\ProductQuiz\Block\Adminhtml\ProductQuiz\Quiz;
+namespace Silentpost\ProductQuiz\Block\Adminhtml\Quiz;
 
 use Magento\Backend\Block\Template;
 use Magento\Directory\Helper\Data as DirectoryHelper;

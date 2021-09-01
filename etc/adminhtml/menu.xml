@@ -10,7 +10,7 @@
         />
         <add id="Silentpost_ProductQuiz::management"
              sortOrder="10"
-             title="Quiz Management"
+             title="Quizzes"
              translate="title"
              module="Silentpost_ProductQuiz"
              parent="Silentpost_ProductQuiz"
@@ -19,12 +19,21 @@
         />
         <add id="Silentpost_ProductQuiz::question_management"
              sortOrder="20"
-             title="Question Management"
+             title="Questions"
              translate="title"
              module="Silentpost_ProductQuiz"
              parent="Silentpost_ProductQuiz"
              resource="Silentpost_ProductQuiz::question_management"
              action="productquiz/question/index"
+        />
+        <add id="Silentpost_ProductQuiz::quiz_management"
+             sortOrder="30"
+             title="Answers"
+             translate="title"
+             module="Silentpost_ProductQuiz"
+             parent="Silentpost_ProductQuiz"
+             resource="Silentpost_ProductQuiz::answer_management"
+             action="productquiz/answer/index"
         />
     </menu>
 </config>

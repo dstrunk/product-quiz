@@ -1,6 +1,6 @@
 <?php
 
-namespace Silentpost\ProductQuiz\Block\Adminhtml\ProductQuiz\Question;
+namespace Silentpost\ProductQuiz\Block\Adminhtml\Question;
 
 use Magento\Framework\Data\OptionSourceInterface;
 use Silentpost\ProductQuiz\Model\ResourceModel\QuizModel\QuizCollectionFactory;

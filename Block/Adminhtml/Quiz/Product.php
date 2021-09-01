@@ -1,6 +1,6 @@
 <?php
 
-namespace Silentpost\ProductQuiz\Block\Adminhtml\ProductQuiz\Quiz;
+namespace Silentpost\ProductQuiz\Block\Adminhtml\Quiz;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;

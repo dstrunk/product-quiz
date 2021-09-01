@@ -32,5 +32,21 @@
         "constraint": {
             "PRIMARY": true
         }
+    },
+  "silentpost_productquiz_answers": {
+    "column": {
+      "answer_id": true,
+      "title": true,
+      "description": true,
+      "is_enabled": true,
+      "question_id": true,
+      "image": true
+    },
+    "index": {
+      "SILENTPOST_PRODUCTQUIZ_ANSWERS_ANSWER_ID": true
+    },
+    "constraint": {
+      "PRIMARY": true
     }
+  }
 }

@@ -5,4 +5,6 @@
                 type="Silentpost\ProductQuiz\Model\Data\QuizData"/>
     <preference for="Silentpost\ProductQuiz\Api\Data\QuestionInterface"
                 type="Silentpost\ProductQuiz\Model\Data\QuestionData"/>
+    <preference for="Silentpost\ProductQuiz\Api\Data\AnswerInterface"
+                type="Silentpost\ProductQuiz\Model\Data\AnswerData"/>
 </config>

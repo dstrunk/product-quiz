@@ -26,6 +26,9 @@ class Save extends Action implements HttpPostActionInterface
      * @see _isAllowed()
      */
     const ADMIN_RESOURCE = 'Silentpost_ProductQuiz::quiz_management';
+    const REQUIRED_FIELDS = [
+        'title',
+    ];
 
     /**
      * @var DataPersistorInterface

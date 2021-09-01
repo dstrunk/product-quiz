@@ -7,7 +7,7 @@
         <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Title Column"/>
         <column xsi:type="varchar" name="description" nullable="false" length="255" comment="Description Column"/>
         <column xsi:type="boolean" name="is_enabled" nullable="false" comment="Is Enabled Column"/>
-        <column xsi:type="varchar" name="products" nullable="false" comment="Product list"/>
+        <column xsi:type="mediumtext" name="products" nullable="false" comment="Product list"/>
         <column xsi:type="datetime" name="created_at" nullable="false" on_update="false" default="CURRENT_TIMESTAMP"/>
         <column xsi:type="datetime" name="updated_at" nullable="false" on_update="true" default="CURRENT_TIMESTAMP"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
@@ -18,7 +18,7 @@
         </index>
     </table>
     <table name="silentpost_productquiz_questions" resource="default" engine="innodb" comment="">
-        <column xsi:type="int" name="question_id" padding="11" unsigned="false" nullable="false" identity="true"/>
+        <column xsi:type="int" name="question_id" padding="11" unsigned="true" nullable="false" identity="true"/>
         <column xsi:type="text" name="title" nullable="false"/>
         <column xsi:type="text" name="description" nullable="true"/>
         <column xsi:type="boolean" name="is_enabled" nullable="false" comment="Is Enabled Column"/>
@@ -30,6 +30,24 @@
         </constraint>
         <index referenceId="SILENTPOST_PRODUCTQUIZ_QUESTIONS_QUESTION_ID" indexType="btree">
             <column name="question_id"/>
+        </index>
+    </table>
+    <table name="silentpost_productquiz_answers" resource="default" engine="innodb" comment="Answer">
+        <column xsi:type="int" name="answer_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Answer Id Column"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Title Column"/>
+        <column xsi:type="varchar" name="description" nullable="false" length="255" comment="Description Column"/>
+        <column xsi:type="boolean" name="is_enabled" nullable="false" comment="Is Enabled Column"/>
+        <column xsi:type="int" name="question_id" padding="11" unsigned="true" nullable="false" identity="false" comment="Question Id Column"/>
+        <column xsi:type="varchar" name="image" nullable="false" length="255" comment="Image Column"/>
+        <column xsi:type="mediumtext" name="conditions_serialized" nullable="false" comment="Product Conditions"/>
+        <column xsi:type="datetime" name="created_at" nullable="false" on_update="false" default="CURRENT_TIMESTAMP"/>
+        <column xsi:type="datetime" name="updated_at" nullable="false" on_update="true" default="CURRENT_TIMESTAMP"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="answer_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="SILENTPOST_PRODUCTQUIZ_ANSWERS_FOREIGN_QUESTION_ID" table="silentpost_productquiz_answers" column="question_id" referenceTable="silentpost_productquiz_questions" referenceColumn="question_id" onDelete="CASCADE" />
+        <index referenceId="SILENTPOST_PRODUCTQUIZ_ANSWERS_ANSWER_ID" indexType="btree">
+            <column name="answer_id"/>
         </index>
     </table>
 </schema>

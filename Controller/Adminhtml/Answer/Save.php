@@ -1,6 +1,6 @@
 <?php
 
-namespace Silentpost\ProductQuiz\Controller\Adminhtml\Question;
+namespace Silentpost\ProductQuiz\Controller\Adminhtml\Answer;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -10,12 +10,12 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\CouldNotSaveException;
-use Silentpost\ProductQuiz\Api\Data\QuestionInterface;
-use Silentpost\ProductQuiz\Api\Data\QuestionInterfaceFactory;
-use Silentpost\ProductQuiz\Command\Question\SaveCommand;
+use Silentpost\ProductQuiz\Api\Data\AnswerInterface;
+use Silentpost\ProductQuiz\Api\Data\AnswerInterfaceFactory;
+use Silentpost\ProductQuiz\Command\Answer\SaveCommand;
 
 /**
- * Save Question controller action.
+ * Save Answer controller action.
  */
 class Save extends Action implements HttpPostActionInterface
 {
@@ -24,9 +24,10 @@ class Save extends Action implements HttpPostActionInterface
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Silentpost_ProductQuiz::question_management';
+    const ADMIN_RESOURCE = 'Silentpost_ProductQuiz::answer_management';
     const REQUIRED_FIELDS = [
         'title',
+        'question_id',
     ];
 
     /**
@@ -40,7 +41,7 @@ class Save extends Action implements HttpPostActionInterface
     private $saveCommand;
 
     /**
-     * @var QuestionInterfaceFactory
+     * @var AnswerInterfaceFactory
      */
     private $entityDataFactory;
 
@@ -48,13 +49,13 @@ class Save extends Action implements HttpPostActionInterface
      * @param Context $context
      * @param DataPersistorInterface $dataPersistor
      * @param SaveCommand $saveCommand
-     * @param QuestionInterfaceFactory $entityDataFactory
+     * @param AnswerInterfaceFactory $entityDataFactory
      */
     public function __construct(
         Context $context,
         DataPersistorInterface $dataPersistor,
         SaveCommand $saveCommand,
-        QuestionInterfaceFactory $entityDataFactory
+        AnswerInterfaceFactory $entityDataFactory
     )
     {
         parent::__construct($context);
@@ -64,7 +65,7 @@ class Save extends Action implements HttpPostActionInterface
     }
 
     /**
-     * Save Question Action.
+     * Save Answer Action.
      *
      * @return ResponseInterface|ResultInterface
      */
@@ -73,17 +74,13 @@ class Save extends Action implements HttpPostActionInterface
         $resultRedirect = $this->resultRedirectFactory->create();
         $params = $this->getRequest()->getParams();
 
-        if (isset($params['general']['quiz_ids'])) {
-            $params['general']['quiz_ids'] = implode(',', $params['general']['quiz_ids']);
-        }
-
         try {
-            /** @var QuestionInterface|DataObject $entityModel */
+            /** @var AnswerInterface|DataObject $entityModel */
             $entityModel = $this->entityDataFactory->create();
             $entityModel->addData($params['general']);
             $this->saveCommand->execute($entityModel);
             $this->messageManager->addSuccessMessage(
-                __('The Question data was saved successfully')
+                __('The Answer data was saved successfully')
             );
             $this->dataPersistor->clear('entity');
         } catch (CouldNotSaveException $exception) {
@@ -91,7 +88,7 @@ class Save extends Action implements HttpPostActionInterface
             $this->dataPersistor->set('entity', $params);
 
             return $resultRedirect->setPath('*/*/edit', [
-                'question_id' => $this->getRequest()->getParam('question_id')
+                'answer_id' => $this->getRequest()->getParam('answer_id')
             ]);
         }
 

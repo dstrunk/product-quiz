@@ -127,7 +127,7 @@
             <formElements>
                 <multiselect>
                     <settings>
-                        <options class="Silentpost\ProductQuiz\Block\Adminhtml\ProductQuiz\Question\Select"/>
+                        <options class="Silentpost\ProductQuiz\Block\Adminhtml\Question\Select"/>
                     </settings>
                 </multiselect>
             </formElements>
