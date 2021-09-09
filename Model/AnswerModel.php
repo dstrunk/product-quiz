@@ -2,11 +2,14 @@
 
 namespace Silentpost\ProductQuiz\Model;
 
-use Magento\Framework\Model\AbstractModel;
+use Magento\CatalogRule\Model\Rule;
 use Silentpost\ProductQuiz\Model\ResourceModel\AnswerResource;
 
-class AnswerModel extends AbstractModel
+class AnswerModel extends Rule
 {
+    const FORM_NAME = 'silentpost_answer_form';
+    const FIELDSET_ID = 'assigned_conditions';
+
     /**
      * @var string
      */

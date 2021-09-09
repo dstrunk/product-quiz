@@ -60,12 +60,14 @@ class SaveCommand
         try {
             /** @var AnswerModel $model */
             $model = $this->modelFactory->create();
-            $model->addData($answer->getData());
+            $model->addData($answer->getData('general'));
+            $model->loadPost($answer->getData('rule'));
             $model->setHasDataChanges(true);
 
             if (!$model->getId()) {
                 $model->isObjectNew(true);
             }
+
             $this->resource->save($model);
         } catch (Exception $exception) {
             $this->logger->error(
@@ -78,6 +80,6 @@ class SaveCommand
             throw new CouldNotSaveException(__('Could not save Answer.'));
         }
 
-        return (int)$model->getEntityId();
+        return (int) $model->getEntityId();
     }
 }

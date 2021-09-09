@@ -39,7 +39,7 @@
         <column xsi:type="boolean" name="is_enabled" nullable="false" comment="Is Enabled Column"/>
         <column xsi:type="int" name="question_id" padding="11" unsigned="true" nullable="false" identity="false" comment="Question Id Column"/>
         <column xsi:type="varchar" name="image" nullable="false" length="255" comment="Image Column"/>
-        <column xsi:type="mediumtext" name="conditions_serialized" nullable="false" comment="Product Conditions"/>
+        <column xsi:type="mediumtext" name="conditions_serialized" nullable="false" comment="Conditions Serialized"/>
         <column xsi:type="datetime" name="created_at" nullable="false" on_update="false" default="CURRENT_TIMESTAMP"/>
         <column xsi:type="datetime" name="updated_at" nullable="false" on_update="true" default="CURRENT_TIMESTAMP"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">

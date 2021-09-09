@@ -77,7 +77,7 @@ class Save extends Action implements HttpPostActionInterface
         try {
             /** @var AnswerInterface|DataObject $entityModel */
             $entityModel = $this->entityDataFactory->create();
-            $entityModel->addData($params['general']);
+            $entityModel->addData($params);
             $this->saveCommand->execute($entityModel);
             $this->messageManager->addSuccessMessage(
                 __('The Answer data was saved successfully')
