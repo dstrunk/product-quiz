@@ -65,8 +65,12 @@ class AssignProducts extends Template
         $quizFactory->addFieldToSelect(['products']);
         $quizFactory->addFieldToFilter('quiz_id', ['eq' => $quizId]);
 
+        if (empty($quizFactory->getData())) {
+            return $this->jsonEncoder->serialize('');
+        }
+
         $products = $quizFactory->getData()[0]['products'];
-        if (empty($quizFactory->getData()) || $products === '') {
+        if ($products === '') {
             return $this->jsonEncoder->serialize('');
         }
 

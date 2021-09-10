@@ -181,12 +181,11 @@ class Product extends Extended
         $id = $this->getRequest()->getParam('quiz_id');
         $model = $this->quizCollectionFactory->create()->addFieldToFilter('quiz_id', $id);
 
-        $products = $model->getData()[0]['products'];
-        if (empty($model->getData()) || $products === '') {
+        if (empty($model->getData())) {
             return [];
         }
 
-        $products = $this->jsonHelper->unserialize($products);
+        $products = $this->jsonHelper->unserialize($model->getData()[0]['products']);
         $grid = [];
         foreach ($products as $product => $position) {
             $grid[$product] = ['position' => $position];
