@@ -11,12 +11,17 @@
             <resource>Silentpost_ProductQuiz::quiz</resource>
             <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
-                <field id="title" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Title</label>
+                <field id="is_active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Is Quiz Enabled?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="description" translate="label" type="editor" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Description</label>
-                    <frontend_model>Silentpost\ProductQuiz\Block\Adminhtml\System\Config\Editor</frontend_model>
+                <field id="active_quiz" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Active Quiz</label>
+                    <tooltip>This dropdown only displays currently enabled quizzes.</tooltip>
+                    <source_model>Silentpost\ProductQuiz\Block\Adminhtml\System\Config\Quiz\Listing</source_model>
+                    <depends>
+                        <field id="is_active">1</field>
+                    </depends>
                 </field>
             </group>
         </section>
