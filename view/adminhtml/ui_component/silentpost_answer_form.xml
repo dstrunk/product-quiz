@@ -145,14 +145,20 @@
             </formElements>
         </field>
     </fieldset>
-    <fieldset name="assigned_conditions" sortOrder="20">
+    <htmlContent name="html_content" sortOrder="20">
+        <argument name="data" xsi:type="array">
+            <item name="wrapper" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Conditions</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">true</item>
+            </item>
+        </argument>
         <settings>
-            <label translate="true">Conditions</label>
+            <wrapper>
+                <canShow>true</canShow>
+                <componentType>fieldset</componentType>
+            </wrapper>
         </settings>
-        <container name="answer_conditions_container" sortOrder="10">
-            <htmlContent name="html_content">
-                <block name="conditions_block" class="Silentpost\ProductQuiz\Block\Adminhtml\Answer\Edit\Conditions"/>
-            </htmlContent>
-        </container>
-    </fieldset>
+        <block name="conditions_block" class="Silentpost\ProductQuiz\Block\Adminhtml\Answer\Edit\Conditions"/>
+    </htmlContent>
 </form>

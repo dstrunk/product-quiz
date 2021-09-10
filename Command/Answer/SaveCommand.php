@@ -60,8 +60,11 @@ class SaveCommand
         try {
             /** @var AnswerModel $model */
             $model = $this->modelFactory->create();
-            $model->addData($answer->getData('general'));
-            $model->loadPost($answer->getData('rule'));
+            $generalData = $this->parseGeneral($answer->getData('general'));
+            $conditions = $answer->getData('rule');
+
+            $model->addData($generalData);
+            $model->loadPost($conditions);
             $model->setHasDataChanges(true);
 
             if (!$model->getId()) {
@@ -81,5 +84,14 @@ class SaveCommand
         }
 
         return (int) $model->getEntityId();
+    }
+
+    private function parseGeneral(array $params): array
+    {
+        if (isset($params['conditions_serialized'])) {
+            unset($params['conditions_serialized']);
+        }
+
+        return $params;
     }
 }

@@ -147,6 +147,9 @@ class Conditions extends Generic implements TabInterface
 
     private function setConditionFormName(AbstractCondition $conditions)
     {
+        $conditions->setFormName(AnswerModel::FORM_NAME);
+        $conditions->setJsFormObject(AnswerModel::FIELDSET_ID);
+
         if ($conditions->getConditions() && is_array($conditions->getConditions())) {
             foreach ($conditions->getConditions() as $condition) {
                 $this->setConditionFormName($condition);

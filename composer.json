@@ -1,5 +1,5 @@
 {
-  "name": "silentpost/product-quiz",
+  "name": "silentpost/module-product-quiz",
   "version": "1.0.0",
   "description": "Provide users with a suggested product after answering questions based on product attributes.",
   "type": "magento2-module",
