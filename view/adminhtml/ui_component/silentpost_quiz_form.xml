@@ -118,11 +118,11 @@
         <settings>
             <label translate="true">Products in Quiz</label>
             <collapsible>true</collapsible>
-            <opened>false</opened>
+            <opened>true</opened>
         </settings>
         <container name="assign_products_container" sortOrder="10">
             <htmlContent name="html_content">
-                <block name="block" class="Silentpost\ProductQuiz\Block\Adminhtml\Quiz\AssignProducts"/>
+                <block name="quiz.product.grid" class="Silentpost\ProductQuiz\Block\Adminhtml\Quiz\AssignProducts"/>
             </htmlContent>
         </container>
     </fieldset>

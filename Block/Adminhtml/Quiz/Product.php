@@ -166,6 +166,11 @@ class Product extends Extended
         return parent::_prepareColumns();
     }
 
+    public function getGridUrl()
+    {
+        return $this->getUrl('*/quiz/productGrid', ['_current' => true]);
+    }
+
     private function getSelectedProductKeys()
     {
         return array_keys($this->getSelectedProducts());
