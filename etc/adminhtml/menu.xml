@@ -8,7 +8,7 @@
              resource="Silentpost_ProductQuiz::management"
              sortOrder="10"
         />
-        <add id="Silentpost_ProductQuiz::management"
+        <add id="Silentpost_ProductQuiz::quiz_management"
              sortOrder="10"
              title="Quizzes"
              translate="title"
@@ -26,7 +26,7 @@
              resource="Silentpost_ProductQuiz::question_management"
              action="productquiz/question/index"
         />
-        <add id="Silentpost_ProductQuiz::quiz_management"
+        <add id="Silentpost_ProductQuiz::answer_management"
              sortOrder="30"
              title="Answers"
              translate="title"
@@ -34,6 +34,15 @@
              parent="Silentpost_ProductQuiz"
              resource="Silentpost_ProductQuiz::answer_management"
              action="productquiz/answer/index"
+        />
+        <add id="Silentpost_ProductQuiz::configuration_management"
+             sortOrder="40"
+             title="Configuration"
+             translate="title"
+             module="Silentpost_ProductQuiz"
+             parent="Silentpost_ProductQuiz"
+             resource="Silentpost_ProductQuiz::configuration_management"
+             action="adminhtml/system_config/edit/section/product_quiz"
         />
     </menu>
 </config>
