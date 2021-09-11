@@ -1,17 +1,19 @@
 <?php /** @var $block \Silentpost\ProductQuiz\Block\Quiz */ ?>
 
-<div data-bind="scope: 'productQuizContainer'">
-    <button data-bind="click: openQuiz">
-        <?= $block->escaper->escapeHtml(__('Open Quiz')) ?>
-    </button>
+<?php if ($block->hasQuiz()) : ?>
+    <div data-bind="scope: 'productQuizContainer'">
+        <button data-bind="click: openQuiz">
+            <?= $block->escaper->escapeHtml(__('Open Quiz')) ?>
+        </button>
 
-    <!-- ko template: getTemplate() --><!-- /ko -->
-</div>
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    </div>
 
-<script type="text/x-magento-init">
-    {
-        "*": {
-            "Magento_Ui/js/core/app": <?= /* @escapeNotVerified */ $block->getJsLayout() ?>
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": <?= /* @escapeNotVerified */ $block->getJsLayout() ?>
+            }
         }
-    }
 </script>
+<?php endif ?>

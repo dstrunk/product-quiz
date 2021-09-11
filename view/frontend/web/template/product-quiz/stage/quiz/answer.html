@@ -1,3 +1,5 @@
-<div class="product-quiz__answer" data-bind="css: { 'product-quiz__answer--selected': answer.selected }, click: function (data) { $parentContext.question.selectAnswer(data) }">
+<div class="product-quiz__answer" data-bind="css: { 'product-quiz__answer--selected': answer.selected }, attr: { 'aria-selected': answer.selected }, click: function (data) { $parentContext.question.selectAnswer(data) }">
     <h3 class="product-quiz__answer-title" data-bind="text: answer.title"></h3>
+
+    <div data-bind="html: answer.description"></div>
 </div>

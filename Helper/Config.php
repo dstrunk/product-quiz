@@ -7,8 +7,8 @@ use Magento\Framework\App\Helper\AbstractHelper;
 
 class Config extends AbstractHelper
 {
-    const PRODUCTQUIZ_GENERAL_TITLE = 'product_quiz/general/title';
-    const PRODUCTQUIZ_GENERAL_DESCRIPTION = 'product_quiz/general/description';
+    const PRODUCT_QUIZ_GENERAL_IS_ACTIVE = 'product_quiz/general/is_active';
+    const PRODUCT_QUIZ_GENERAL_ACTIVE_QUIZ = 'product_quiz/general/active_quiz';
 
     public function getConfigValue(
         $value,

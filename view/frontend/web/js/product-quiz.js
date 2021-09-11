@@ -5,53 +5,6 @@ define([
 ], function (ko, Component, QuizQuestion) {
     'use strict';
 
-    const data = {
-        questions: [
-            {
-                id: 0,
-                title: 'Question 1',
-                answers: [
-                    {
-                        id: 0,
-                        title: 'Q1: Answer 1',
-                        selected: false,
-                    },
-                    {
-                        id: 1,
-                        title: 'Q1: Answer 2',
-                        selected: false,
-                    },
-                    {
-                        id: 2,
-                        title: 'Q1: Answer 3',
-                        selected: false,
-                    },
-                ],
-            },
-            {
-                id: 1,
-                title: 'Question 2',
-                answers: [
-                    {
-                        id: 3,
-                        title: 'Q2: Answer 1',
-                        selected: false,
-                    },
-                    {
-                        id: 4,
-                        title: 'Q2: Answer 2',
-                        selected: false,
-                    },
-                    {
-                        id: 5,
-                        title: 'Q2: Answer 3',
-                        selected: false,
-                    },
-                ],
-            }
-        ],
-    };
-
     let self;
     return Component.extend({
         defaults: {
@@ -114,11 +67,9 @@ define([
         },
 
         fetchQuiz: function (config) {
-            // @TODO: Request quiz information and questions from controller.
-            // @TODO: Push questions into KO observable array.
             self.quizTitle = config.data.title
             self.quizDescription = config.data.description
-            data.questions.forEach(function (question) {
+            config.data?.questions?.forEach(function (question) {
                 self.questions.push(new QuizQuestion(question))
             })
 

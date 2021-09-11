@@ -21,13 +21,13 @@ define([
             this.title = question.title
             this.answers = []
 
-            question.answers.forEach(answer => this.answers.push(new QuizAnswer(answer)))
+            question.answers?.forEach(answer => this.answers.push(new QuizAnswer(answer)))
 
             return this
         },
 
         selectAnswer: function (answer) {
-            this.answers.forEach(function (a) {
+            this.answers?.forEach(function (a) {
                 a.selected = false
             })
 
