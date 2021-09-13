@@ -1,5 +1,11 @@
 # Product Quiz Recommendations for Magento 2.x
 
+**Warning! This software is currently pre-1.0.0. Expect breaking changes until an official, tagged 1.0.0 release is 
+available.** Please see the [Road to 1.0.0][roadmap] project to see what is expected before a tagged release is 
+available.
+
+[roadmap]: https://github.com/dstrunk/product-quiz/projects/1
+
 This module allows business-users to create product quiz recommendations within the Magento 2 admin dashboard.
 
 ## Installation
