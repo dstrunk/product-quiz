@@ -16,6 +16,7 @@
     <div class="product-quiz__pagination" data-bind="foreach: { data: $parent.questions, as: 'question' }">
         <span class="product-quiz__pagination-item" data-bind="css: { 'product-quiz__pagination-item--active': $parentContext.$parent.currentQuestion().id == $index() }">
             <span class="sr-only" data-bind="i18n: 'Question '"></span><span class="sr-only" data-bind="text: $index"></span>
+        </span>
     </div>
 
     <div class="product-quiz__actions" data-bind="visible: $parent.canViewResults()">

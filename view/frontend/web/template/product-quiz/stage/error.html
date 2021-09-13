@@ -3,7 +3,7 @@
     <p data-bind="i18n: 'Please try again.'"></p>
 
     <div class="product-quiz__actions">
-        <button data-bind="click: function () { $parent.restartQuiz() }, i18n: 'Restart quiz'"></button>
-        <button data-bind="visible: $parent.canViewResults(), click: function () { $parent.submit() }, i18n: 'Resubmit results'"></button>
+        <button class="action secondary" data-bind="click: function () { $parent.restartQuiz() }, i18n: 'Restart quiz'"></button>
+        <button class="action primary" data-bind="visible: $parent.canViewResults(), click: function () { $parent.submit() }, i18n: 'Resubmit results'"></button>
     </div>
 </div>

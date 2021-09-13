@@ -1,8 +1,10 @@
 define([
+    'jquery',
     'ko',
     'uiComponent',
     'productQuizQuestion',
-], function (ko, Component, QuizQuestion) {
+    'mage/url',
+], function ($, ko, Component, QuizQuestion, url) {
     'use strict';
 
     let self;
@@ -69,7 +71,8 @@ define([
         fetchQuiz: function (config) {
             self.quizTitle = config.data.title
             self.quizDescription = config.data.description
-            config.data?.questions?.forEach(function (question) {
+            self.quizButtonText = config.data.button_text
+            config.data.questions?.forEach(function (question) {
                 self.questions.push(new QuizQuestion(question))
             })
 
@@ -93,7 +96,15 @@ define([
                 values.push(answer)
             })
 
-            // @TODO: Submit results to controller.
+            $.ajax(url.build('product_quiz/quiz/results'), {
+                data: {
+                    'quiz_results': values,
+                }
+            }).done(function () {
+            }).fail(function (_data) {
+                self.quizStage = false;
+                self.errorStage = true;
+            })
         },
 
         restartQuiz: function () {

@@ -113,6 +113,33 @@
                 </wysiwyg>
             </formElements>
         </field>
+        <field name="button_text" sortOrder="40" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">button_text</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Button Text</label>
+                <dataScope>button_text</dataScope>
+            </settings>
+        </field>
+        <field name="number_of_products" sortOrder="50" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">number_of_products</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Number of Products</label>
+                <tooltip>
+                    <description translate="true">This controls how many products to display after users have finished the quiz and are sent to the results page.</description>
+                </tooltip>
+                <dataScope>number_of_products</dataScope>
+            </settings>
+        </field>
     </fieldset>
     <fieldset name="assigned_products" sortOrder="20">
         <settings>

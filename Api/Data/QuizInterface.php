@@ -10,6 +10,8 @@ interface QuizInterface
     const QUIZ_ID = "quiz_id";
     const TITLE = "title";
     const DESCRIPTION = "description";
+    const BUTTON_TEXT = "button_text";
+    const NUMBER_OF_PRODUCTS = "number_of_products";
     const IS_ENABLED = "is_enabled";
     const PRODUCTS = "products";
 
@@ -60,6 +62,38 @@ interface QuizInterface
      * @return void
      */
     public function setDescription(?string $description): void;
+
+    /**
+     * Getter for Button Text.
+     *
+     * @return string|null
+     */
+    public function getButtonText(): ?string;
+
+    /**
+     * Setter for Button Text.
+     *
+     * @param string|null $buttonText
+     *
+     * @return void
+     */
+    public function setButtonText(?string $buttonText): void;
+
+    /**
+     * Getter for Number of Products.
+     *
+     * @return string|null
+     */
+    public function getNumberOfProducts(): ?string;
+
+    /**
+     * Setter for Number of Products.
+     *
+     * @param string|null $numberOfProducts
+     *
+     * @return void
+     */
+    public function setNumberOfProducts(?string $numberOfProducts): void;
 
     /**
      * Getter for IsEnabled.

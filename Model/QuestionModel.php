@@ -56,6 +56,6 @@ class QuestionModel extends AbstractModel
             ->answerCollectionFactory
             ->create()
             ->addFieldToSelect('*')
-            ->addFIeldToFilter('answer_id', ['eq' => $this->getId()]);
+            ->addFIeldToFilter('question_id', ['eq' => $this->getId()]);
     }
 }

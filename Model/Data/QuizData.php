@@ -59,6 +59,38 @@ class QuizData extends DataObject implements QuizInterface
     /**
      * @inheritDoc
      */
+    public function getButtonText(): ?string
+    {
+        return $this->getData(self::BUTTON_TEXT);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setButtonText(?string $buttonText): void
+    {
+        $this->setData(self::BUTTON_TEXT, $buttonText);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getNumberOfProducts(): ?string
+    {
+        return $this->getData(self::NUMBER_OF_PRODUCTS);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setNumberOfProducts(?string $numberOfProducts): void
+    {
+        $this->setData(self::NUMBER_OF_PRODUCTS, $numberOfProducts);
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function getIsEnabled(): ?bool
     {
         return $this->getData(self::IS_ENABLED) === null ? null

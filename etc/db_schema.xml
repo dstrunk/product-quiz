@@ -6,6 +6,8 @@
                 comment="Quiz Id Column"/>
         <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Title Column"/>
         <column xsi:type="varchar" name="description" nullable="false" length="255" comment="Description Column"/>
+        <column xsi:type="varchar" name="button_text" nullable="false" length="255" comment="Quiz Button Column"/>
+        <column xsi:type="varchar" name="number_of_products" nullable="true" length="10" comment="Number of Products Column"/>
         <column xsi:type="boolean" name="is_enabled" nullable="false" comment="Is Enabled Column"/>
         <column xsi:type="mediumtext" name="products" nullable="false" comment="Product list"/>
         <column xsi:type="datetime" name="created_at" nullable="false" on_update="false" default="CURRENT_TIMESTAMP"/>

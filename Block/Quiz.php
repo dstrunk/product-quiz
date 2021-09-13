@@ -112,6 +112,7 @@ class Quiz extends Template
         return [
             'title' => $this->helper->getQuiz()->getTitle(),
             'description' => $this->helper->getQuiz()->getDescription(),
+            'button_text' => $this->helper->getQuiz()->getButtonText(),
             'questions' => $questions,
         ];
     }
