@@ -1,0 +1,8 @@
+<?php /** @var \Silentpost\ProductQuiz\Block\Results $block */ ?>
+
+<div class="product-quiz-results">
+    <h2 class="product-quiz-results__title"><?= $block->escaper->escapeHtml(__('Quiz Results')) ?></h2>
+
+    <?= $block->getChildHtml('product-quiz.recommended-product') ?>
+    <?= $block->getChildHtml('product-quiz.top-products') ?>
+</div>

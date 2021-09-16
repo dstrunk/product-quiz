@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="formkey"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Silentpost\ProductQuiz\Block\Results" name="product-quiz.results" as="product-quiz.results" template="Silentpost_ProductQuiz::results.phtml">
+                <block class="Silentpost\ProductQuiz\Block\Results" name="product-quiz.results.recommended-product" as="product-quiz.recommended-product" template="Silentpost_ProductQuiz::results/recommended-product.phtml"/>
+                <block class="Silentpost\ProductQuiz\Block\Results" name="product-quiz.results.top-products" as="product-quiz.top-products" template="Silentpost_ProductQuiz::results/top-products.phtml"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

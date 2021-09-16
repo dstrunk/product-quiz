@@ -2,6 +2,8 @@
 
 namespace Silentpost\ProductQuiz\Model;
 
+use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Silentpost\ProductQuiz\Model\ResourceModel\AnswerModel\AnswerCollectionFactory;
 use Silentpost\ProductQuiz\Model\ResourceModel\QuestionModel\QuestionCollectionFactory;
@@ -31,5 +33,37 @@ class Results
         $this->questionCollectionFactory = $questionCollectionFactory;
         $this->answerCollectionFactory = $answerCollectionFactory;
         $this->productCollectionFactory = $productCollectionFactory;
+    }
+
+    public function getRecommendedProduct()
+    {
+        return $this->productCollectionFactory
+            ->create()
+            ->addAttributeToSelect('*')
+            ->getFirstItem();
+    }
+
+    public function getTopProducts()
+    {
+        return $this->productCollectionFactory
+            ->create()
+            ->addAttributeToSelect('*')
+            ->setPageSize(3)
+            ->setCurPage(1);
+    }
+
+    public function getQuiz()
+    {
+        $this->quizCollectionFactory->create();
+    }
+
+    public function getQuestions()
+    {
+        $this->questionCollectionFactory->create();
+    }
+
+    public function getUserProvidedAnswers()
+    {
+        $this->answerCollectionFactory->create();
     }
 }

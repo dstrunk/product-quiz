@@ -1,0 +1,47 @@
+<?php /** @var \Silentpost\ProductQuiz\Block\Results $block */ ?>
+
+<?php if ($block->getRecommendedProduct()) : ?>
+    <div class="recommended-product">
+        <div class="recommended-product__image-container">
+            <img class="recommended-product__image"
+                 src="<?= $block->escaper->escapeHtmlAttr($block->getImageUrl($block->getRecommendedProduct(), 'medium_image_url')) ?>"
+                 alt=""
+            />
+        </div>
+        <h3 class="recommended-product__title">
+            <?= $block->getRecommendedProduct()->getName() ?>
+        </h3>
+        <div class="recommended-product__description">
+            <?= /** @noEscape  */ $block->getRecommendedProduct()->getDescription() ?>
+        </div>
+
+        <?php if ($block->getRecommendedProduct()->isSaleable()) : ?>
+            <div class="product-quiz-results__actions recommended-product__actions">
+                <form data-product-sku="<?= $block->escaper->escapeHtml($block->getRecommendedProduct()->getSku()) ?>"
+                      action="<?= $block->escaper->escapeUrl($block->getSubmitUrl($block->getRecommendedProduct())) ?>"
+                      method="post"
+                      id="product-addtocart-form-<?= $block->escaper->escapeHtmlAttr($block->getRecommendedProduct()->getSku()) ?>"
+                      <?php if ($block->getRecommendedProduct()->getOptions()) : ?>
+                        enctype="multipart/form-data"
+                      <?php endif ?>>
+                    <input type="hidden" name="product" value="<?= /** @noEscape */ (int) $block->getRecommendedProduct()->getId() ?>" />
+                    <input type="hidden" name="selected_configurable_option" value="" />
+                    <input type="hidden" name="item" value="<?= /** @noEscape */ (int) $block->getRequest()->getParam('id') ?>" />
+                    <?= $block->getBlockHtml('formkey') ?>
+                    <button type="submit"
+                            class="product-quiz-results__action recommended-product__action">
+                        <?= $block->escaper->escapeHtml(__('Add to Cart')) ?>
+                    </button>
+                </form>
+            </div>
+
+            <script type="text/x-magento-init">
+                {
+                    "#product-addtocart-form-<?= $block->escaper->escapeHtmlAttr($block->getRecommendedProduct()->getSku()) ?>": {
+                        "Magento_Catalog/js/validate-product": {}
+                    }
+                }
+            </script>
+        <?php endif ?>
+    </div>
+<?php endif ?>

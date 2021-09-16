@@ -112,6 +112,7 @@ define([
             self.resetQuizData()
             self.introStage = true
             self.quizStage = false
+            self.errorStage = false
         },
 
         resetQuizData: function () {

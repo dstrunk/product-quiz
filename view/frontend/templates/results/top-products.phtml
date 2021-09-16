@@ -1,0 +1,53 @@
+<?php /** @var \Silentpost\ProductQuiz\Block\Results $block */ ?>
+
+<?php if ($block->getTopProducts()->count()) : ?>
+    <div class="top-products">
+        <h3 class="top-products__title">
+            <?= $block->escaper->escapeHtml(__('You may also be interested in:')) ?>
+        </h3>
+
+        <?php foreach ($block->getTopProducts() as $topProduct) : ?>
+            <div class="top-product">
+                <div class="top-product__image-container">
+                    <img class="top-product__image"
+                         src="<?= $block->escaper->escapeHtmlAttr($block->getImageUrl($topProduct)) ?>"
+                         alt=""
+                    />
+                </div>
+                <h4 class="top-product__title"><?= $topProduct->getName() ?></h4>
+                <div class="top-product__description">
+                    <?= /** @noEscape */ $topProduct->getDescription() ?>
+                </div>
+
+                <?php if ($topProduct->isSaleable()) : ?>
+                    <div class="product-quiz-results__actions top-product__actions">
+                        <form data-product-sku="<?= $block->escaper->escapeHtml($topProduct->getSku()) ?>"
+                              action="<?= $block->escaper->escapeUrl($block->getSubmitUrl($topProduct)) ?>"
+                              method="post"
+                              id="product-addtocart-form-<?= $block->escaper->escapeHtmlAttr($topProduct->getSku()) ?>"
+                            <?php if ($topProduct->getOptions()) : ?>
+                                enctype="multipart/form-data"
+                            <?php endif ?>>
+                            <input type="hidden" name="product" value="<?= /** @noEscape */ (int) $topProduct->getId() ?>" />
+                            <input type="hidden" name="selected_configurable_option" value="" />
+                            <input type="hidden" name="item" value="<?= /** @noEscape */ (int) $block->getRequest()->getParam('id') ?>" />
+                            <?= $block->getBlockHtml('formkey') ?>
+                            <button type="submit"
+                                    class="product-quiz-results__action recommended-product__action">
+                                <?= $block->escaper->escapeHtml(__('Add to Cart')) ?>
+                            </button>
+                        </form>
+                    </div>
+
+                    <script type="text/x-magento-init">
+                        {
+                            "#product-addtocart-form-<?= $block->escaper->escapeHtmlAttr($block->getRecommendedProduct()->getSku()) ?>": {
+                                "Magento_Catalog/js/validate-product": {}
+                            }
+                        }
+                    </script>
+                <?php endif ?>
+            </div>
+        <?php endforeach ?>
+    </div>
+<?php endif ?>
