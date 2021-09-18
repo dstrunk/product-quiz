@@ -4,6 +4,7 @@ namespace Silentpost\ProductQuiz\Block;
 
 use Magento\Customer\CustomerData\JsLayoutDataProviderPoolInterface;
 use Magento\Framework\Escaper;
+use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use Silentpost\ProductQuiz\Helper\Data;
@@ -20,11 +21,15 @@ class Quiz extends Template
     /** @var Data */
     private $helper;
 
+    /** @var Json */
+    private $json;
+
     public function __construct(
         Context $context,
         Escaper $escaper,
         JsLayoutDataProviderPoolInterface $jsLayout,
         Data $helper,
+        Json $json,
         array $data = []
     ) {
         $this->escaper = $escaper;
@@ -32,6 +37,7 @@ class Quiz extends Template
             ? array_merge_recursive($jsLayout->getData(), $data['jsLayout'])
             : $jsLayout->getData();
         $this->helper = $helper;
+        $this->json = $json;
 
         parent::__construct($context, $data);
     }
@@ -46,7 +52,7 @@ class Quiz extends Template
 
     public function getJsLayout()
     {
-        return json_encode([
+        return $this->json->serialize([
             'types',
             'components' => [
                 'productQuizContainer' => [
