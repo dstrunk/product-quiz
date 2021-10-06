@@ -86,21 +86,22 @@ define([
         },
 
         submit: function () {
-            let values = []
+            let values = {}
 
             self.questions.forEach(question => {
-                let answer = {}
                 let object = question.answers.find(answer => answer.selected === true)
-                answer.question_id = question.id
-                answer.answer_id = object.id
-                values.push(answer)
+                values[question.id] = object.id
             })
 
-            $.ajax(url.build('product_quiz/quiz/results'), {
+            $.ajax(url.build('product_quiz/results/post'), {
+                method: 'post',
                 data: {
                     'quiz_results': values,
                 }
-            }).done(function () {
+            }).done(function (data) {
+                if (data.response === 'success') {
+                    window.location.href = data.redirect_url;
+                }
             }).fail(function (_data) {
                 self.quizStage = false;
                 self.errorStage = true;
